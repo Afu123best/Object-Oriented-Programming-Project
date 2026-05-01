@@ -36,4 +36,5 @@ public:
 
     void display_comments();
     virtual void display();
+    virtual void display_no_comments();
 };
