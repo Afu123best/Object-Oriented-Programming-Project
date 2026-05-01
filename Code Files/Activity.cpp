@@ -41,3 +41,15 @@ void Activity::display()
     cout << ")" << endl;
     display_comments();
 }
+
+void Activity::display_no_comments()
+{
+    cout << "--- " << get_posted_by()->get_name() << " is ";
+    if (type == 1) cout << "feeling " << value << endl;
+    else if (type == 2) cout << "thinking about " << value << endl;
+    else if (type == 3) cout << "making " << value << endl;
+    else if (type == 4) cout << "celebrating " << value << endl;
+    cout << "\"" << get_description() << "\" ... (";
+    get_shared_date()->display();
+    cout << ")" << endl;
+}
