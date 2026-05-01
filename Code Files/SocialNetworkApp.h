@@ -7,6 +7,7 @@
 #include "Memory.h"
 #include "Comment.h"
 #include "Date.h"
+#include <fstream>
 
 class SocialNetworkApp
 {
@@ -24,6 +25,14 @@ public:
     SocialNetworkApp();
     ~SocialNetworkApp();
 
+    User* find_user(string id);
+    Page* find_page(string id);
+    Post* find_post(string id);
+
+    void load_users();
+    void load_pages();
+    void load_posts();
+    void load_relationships();
     void load_data();
 
     void run();
