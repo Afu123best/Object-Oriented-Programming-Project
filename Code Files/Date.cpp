@@ -51,5 +51,5 @@ bool Date::is_within_24_hrs(Date& current)
 }
 void Date::display() // dd/mm/yy
 {
-    cout << "dd/mm/yy: " << day << "/" << month << "/" << year << endl;
+    cout << day << "/" << month << "/" << year;
 }
