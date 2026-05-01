@@ -20,6 +20,6 @@ void Memory::display()
     cout << "\"" << get_description() << "\"" << endl;
     int years_ago = get_shared_date()->get_year() - original_post->get_shared_date()->get_year();
     cout << "(" << years_ago << " Years Ago)" << endl;
-    original_post->display();
+    original_post->display_no_comments();
     display_comments();
 }
