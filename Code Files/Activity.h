@@ -15,4 +15,5 @@ public:
     string get_value();
     
     void display() override;
+    void display_no_comments();
 };
