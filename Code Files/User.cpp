@@ -1,4 +1,5 @@
 #include "User.h"
+#include "Post.h"
 
 User::User(string id, string name)
 : Entity(id,name)
@@ -16,11 +17,6 @@ User::~User()
 
     delete[] liked_pages;
 
-    for (int i = 0; i < post_count; i++)
-    {
-        delete posts[i];
-    }
-    delete[] posts;
 }
 
 User** User::get_friends_list()
