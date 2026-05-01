@@ -1,4 +1,5 @@
 #include "Page.h"
+#include "Post.h"
 
 Page::Page(string id, string name, User* owner)
 : Entity(id,name)
@@ -11,10 +12,6 @@ Page::Page(string id, string name, User* owner)
 
 Page::~Page()
 {
-    for (int i = 0; i < post_count; i++)
-    {
-        delete list_of_posts[i];
-    }
     delete[] list_of_posts;
 }
 
