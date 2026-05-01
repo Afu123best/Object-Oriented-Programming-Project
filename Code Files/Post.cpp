@@ -83,3 +83,8 @@ void Post::display()
     cout << "--- " << posted_by->get_name() << " shared \"" << description << "\"" << endl;
     display_comments();
 }
+
+void Post::display_no_comments()
+{
+    cout << "--- " << posted_by->get_name() << " shared \"" << description << "\"" << endl;
+}
