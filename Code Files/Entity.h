@@ -10,7 +10,7 @@ protected:
     string name;
 
 public:
-    Entity(string i, string n) : name(n), id(i);
+    Entity(string i, string n);
     string get_id();
     string get_name();
     virtual void display();
