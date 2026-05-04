@@ -1,6 +1,29 @@
 #include "SocialNetworkApp.h"
 #include <sstream>
 
+//helper functions
+string SocialNetworkApp::get_input(string prompt)
+{
+    string input;
+    cout << prompt;
+    cin >> input;
+    return input;
+}
+
+int SocialNetworkApp::get_int_input(string prompt)
+{
+    int value;
+    while (true)
+    {
+        cout << prompt;
+        if (cin >> value)
+            return value;
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cout << "Invalid input. Enter a number.\n";
+    }
+}
+
 SocialNetworkApp::SocialNetworkApp()
 {
     all_users = nullptr;
@@ -520,8 +543,11 @@ void SocialNetworkApp::run()
     cout << "1.Set System Date\n2.Set Current User\n3.View Home\n4.View Profile\n5.View Friend List\n6.View Liked Pages\n7.Like Post\n8.View Liked List\n9.Comment On Post\n10.View Post\n11.See Your Memories\n12.Share Memory\n13.View Page\n14.Exit";
     while (true)
     {
-        cout << "\nEnter command: ";
-        cin >> choice;
+        cout << endl;
+        //input validation with input
+        choice = get_int_input("Enter Command: ");
+
+
         if (choice == 1)
         {
             set_system_date();
@@ -723,8 +749,10 @@ void SocialNetworkApp::like_post()
         return;
     }
     string post_id;
-    cout << "Enter post ID: ";
-    cin >> post_id;
+
+    cout << endl;
+    post_id = get_input("Enter post ID: ");
+    
     for (int i = 0; i < post_count; i++)
     {
         if (all_posts[i]->get_id() == post_id)
@@ -744,9 +772,11 @@ void SocialNetworkApp::view_liked_list()
         cout << "Please set current user first." << endl;
         return;
     }
+    
     string post_id;
-    cout << "Enter post ID:";
-    cin >> post_id;
+    cout << endl;
+    post_id = get_input("Enter post ID:");
+    
     for (int i = 0; i < post_count; i++)
     {
         if (all_posts[i]->get_id() == post_id)
@@ -770,11 +800,12 @@ void SocialNetworkApp::comment_on_post()
         cout << "Please set current user first." << endl;
         return;
     }
-    cout << "Enter post ID to comment on: ";
+
     string post_id;
-    cin >> post_id;
-    cout << "Enter your comment: ";
+    post_id = get_input("Enter post ID to comment on: ");
+
     string comment;
+    cout << "Enter your comment: ";
     cin.ignore();
     getline(cin, comment);
     for (int i = 0; i < post_count; i++)
@@ -796,9 +827,11 @@ void SocialNetworkApp::view_post()
         cout << "Please set current user first." << endl;
         return;
     }
-    cout << "Enter post ID to view: ";
+
     string post_id;
-    cin >> post_id;
+    cout << endl;
+    post_id = get_input("Enter post ID to view: ");
+
     for (int i = 0; i < post_count; i++)
     {
         if (all_posts[i]->get_id() == post_id)
@@ -838,12 +871,15 @@ void SocialNetworkApp::share_memory()
         cout << "Please set current user first." << endl;
         return;
     }
-    cout << "Enter post ID to share memory on: ";
+    
     string post_id;
-    cin >> post_id;
-    cout << "Enter new text: ";
+    cout << endl;
+    post_id = get_input("Enter post ID to share memory on: ");
+
     string new_text;
-    cin.ignore();
+    cout << endl;
+    new_text = get_input("Enter new text: ");
+
     getline(cin, new_text);
     Post** posts = current_user->get_posts();
     for (int i = 0; i < post_count; i++)
@@ -877,9 +913,11 @@ void SocialNetworkApp::view_page()
         cout << "Please set current user first." << endl;
         return;
     }
-    cout << "Enter page ID to view: ";
+    
     string page_id;
-    cin >> page_id;
+    cout << endl;
+    page_id = get_input("Enter page ID to view: ");
+
     for (int i = 0; i < page_count; i++)
     {
         if (all_pages[i]->get_id() == page_id)
