@@ -62,4 +62,8 @@ public:
     void share_memory();
 
     void view_page();
+
+
+    string get_input(string prompt);
+    int get_int_input(string prompt);
 };
